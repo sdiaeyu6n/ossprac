@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, develop ] # push할 때 동작할 branch를 입력
 env:
-  DOCKER_IMAGE: ghcr.io/sdiaeyu6n/ossprac-web1 # ghcr.io/깃헙의 유저네임/레포지토리 이름 입력
+  DOCKER_IMAGE: ghcr.io/sdiaeyu6n/ossprac-web1
   VERSION: ${{ github.sha }}
 
 jobs:
@@ -51,5 +51,5 @@ jobs:
           password: ${{ secrets.CR_PAT }}
       - name: Docker run
         run: |
-          docker ps -q --filter "name=osspga" | grep -q . && docker stop osspga && docker rm -fv osspga
+          docker ps -q --filter "name=ossprac-web1" | grep -q . && docker stop ossprac-web1 && docker rm -fv ossprac-web1
           docker run -d -p 80:80 --name cicd --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
