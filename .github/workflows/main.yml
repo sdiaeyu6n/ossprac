@@ -29,7 +29,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ppomi!101226
+          password: ${{ secrets.CR_PAT }}
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -48,7 +48,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.CR_PAT }}
+          password: ${{ secrets.OSSPRAC_WEB1 }}
       - name: Docker run
         run: |
           docker ps -q --filter "name=ossprac-web1" | grep -q . && docker stop ossprac-web1 && docker rm -fv ossprac-web1
