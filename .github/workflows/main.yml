@@ -29,7 +29,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
+          password: ${{ secrets.OSSPRAC_WEB1 }}
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -44,7 +44,7 @@ jobs:
     runs-on: [ self-hosted, label-development ]
     steps:
       - name: Login to ghcr
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
