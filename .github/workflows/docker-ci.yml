@@ -39,7 +39,7 @@ jobs:
           push: true
           tags: ${{ env.DOCKER_IMAGE }}:latest
   deploy:
-    needs: build
+    needs: Build
     name: Deploy
     runs-on: [ self-hosted, label-go ]
     steps:
