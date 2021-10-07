@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 env:
-  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/osspwebga
+  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/ossprac-web1
   VERSION: ${{ github.sha }}
   
 jobs:
@@ -51,5 +51,5 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Docker run
         run: |
-          docker ps -q --filter "name=gacicd" | grep -q . && docker stop gacicd && docker rm -fv gacicd
-          docker run -d -p 8080:8080 --name cicd --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+          docker ps -q --filter "name=cicd_ga" | grep -q . && docker stop cicd_ga && docker rm -fv cicd_ga
+          docker run -d -p 8080:8080 --name cicd_ga --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
