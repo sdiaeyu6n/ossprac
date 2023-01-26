@@ -1,1 +1,1 @@
-### creating lab assignments for Ossp-prac
+### creating lab assignments for the lecture [Ossp-prac]
